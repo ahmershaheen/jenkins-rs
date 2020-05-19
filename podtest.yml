@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: pod-git
+spec:
+  replicas: 2
+  selector: 
+    matchExpressions:
+      - { key: env, operator: In, values: [ ahmer ] }
+            
+  template:
+    metadata:
+      name: pod-git
+      labels:
+        env: ahmer
+       
+    spec:
+      containers:
+      - name: test-con
+        image: httpd
